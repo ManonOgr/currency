@@ -65,6 +65,14 @@ form{
     justify-content: space-between;
     align-items: center;
     width: 400px;
+    flex-wrap: wrap;
     margin-bottom: 30px;
 }
+
+@media only screen and (max-width: 800px) {
+		
+        .containerForm{
+            width: 300px;
+        }
+        }
 </style>
