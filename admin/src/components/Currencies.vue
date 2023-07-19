@@ -1,24 +1,45 @@
 <template>
-    <div>
-
-        <table class="table table-striped table-dark">
+    <div class="container-tab">
+        <h1>Devises </h1>
+        <table>
             <thead>
-            <tr class="thead-light" scope="col">
-                <th>nom de la devise</th>
-                <th>code de la devise </th>
-                <th>symbole de la devise</th>
-            </tr>
+                <tr>
+                    <th>nom</th>
+                    <th>code</th>
+                    <th>symbole</th>
+                </tr>
             </thead>
-        <tbody>
-            <tr scope="row">
-                <td>donnée dure</td>
-                <td>donnée dure</td>
-                <td>donnée dur</td>
-            </tr>
-        </tbody>
+            <tbody>
+                <tr scope="row">
+                    <td>donnée dure</td>
+                    <td>donnée dure</td>
+                    <td>donnée dure</td>
+                </tr>
+            </tbody>
         </table>
 
-        <button class="btn btn-primary"> Ajouter une paire </button>
+        <button class="btn"> Ajouter une paire </button>
 
     </div>
 </template>
+
+<style>
+.container-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+}
+
+button {
+    margin-top: 30px;
+}
+</style>
