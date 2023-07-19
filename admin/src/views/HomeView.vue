@@ -1,13 +1,9 @@
 <script setup>
-
-
-
-
+import AdminForm from "@/components/AdminForm.vue";
 </script>
 
 <template>
-    <main>
-        
-       
-    </main>
+  <main>
+    <AdminForm />
+  </main>
 </template>
