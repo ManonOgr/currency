@@ -7,7 +7,7 @@ import { RouterLink, RouterView } from "vue-router";
     <div>
     <nav>
       <RouterLink to="/currency">Currency's list</RouterLink>
-      <RouterLink to="/Convert">Convert</RouterLink>
+      <RouterLink to="/convert">Convert</RouterLink>
       <RouterLink to="/home">Login</RouterLink>
 
     </nav>
@@ -19,21 +19,11 @@ import { RouterLink, RouterView } from "vue-router";
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+header, nav{
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
 }
 
 nav a.router-link-exact-active {
