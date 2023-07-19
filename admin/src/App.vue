@@ -6,7 +6,7 @@ import { RouterLink, RouterView } from "vue-router";
   <header>
     <div>
     <nav>
-      <RouterLink to="/CurrencyList">Currency's list</RouterLink>
+      <RouterLink to="/currency">Currency's list</RouterLink>
       <RouterLink to="/Convert">Convert</RouterLink>
       <RouterLink to="/home">Login</RouterLink>
 
