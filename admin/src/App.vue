@@ -11,7 +11,6 @@
     <v-main>
       <v-container>
         <router-view />
-        <h1>Manon</h1>
       </v-container>
     </v-main>
   </v-layout>
