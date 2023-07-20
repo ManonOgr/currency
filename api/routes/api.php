@@ -26,7 +26,7 @@ Route::get('/ping', function () {
 
 Route::resource('pairs', PairsController::class);
 Route::resource('currencies', CurrencyController::class);
-Route::get('convert', [ConversionController::class, 'convert']);
+Route::get('conversions', [ConversionController::class, 'convert']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -34,7 +34,7 @@ class Pairs extends Model
     {
         return $this->rate;
     }
-    
+
     public static function getPairsByCurrencies(Currency $currencyFrom, Currency $currencyTo)
     {
         $from = $currencyFrom->id;

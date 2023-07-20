@@ -1,4 +1,29 @@
-<script></script>
+<script>
+import axios from "axios";
+
+const URL = "http://localhost:8000/api/pairs";
+const URLCurrencies = "http://localhost:8000/api/currencies";
+export default {
+  name: "AdminDashboard",
+  data() {
+    return {
+      curr_data: "",
+      pairs_data: "",
+    };
+  },
+  async mounted() {
+    await axios.get(URL).then((response) => {
+      this.pairs_data = response.data;
+      console.log(this.pairs_data);
+    });
+
+    await axios.get(URLCurrencies).then((response) => {
+      this.curr_data = response.data;
+      console.log(this.curr_data);
+    });
+  },
+};
+</script>
 <template>
   <div class="container">
     <h1>Dashboard admin</h1>
@@ -12,10 +37,10 @@
           <th>Supprimer</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td></td>
-          <td></td>
+      <tbody v-if="this.curr_data">
+        <tr v-for="data in this.pairs_data" :key="data.id">
+          <td>{{ this.curr_data[data.currency_from_id]?.currencies_name }} / {{ this.curr_data[data.currency_to_id]?.currencies_name }}</td>
+          <td>{{ data.rate }}</td>
           <td></td>
           <td><button class="btn">Modifier</button></td>
           <td><button class="btn">Supprimer</button></td>

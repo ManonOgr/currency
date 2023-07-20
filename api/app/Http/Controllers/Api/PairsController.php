@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Pairs;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
 class PairsController extends Controller
@@ -50,6 +51,7 @@ class PairsController extends Controller
     public function show(Pairs $pairs)
     {
         //
+        return Response::json(Pairs::all());
     }
 
     /**
@@ -82,5 +84,5 @@ class PairsController extends Controller
         return response()->json(['message'=>'Delete success']);
     }
 
-    
+
 }
