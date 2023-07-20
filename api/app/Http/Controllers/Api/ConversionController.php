@@ -7,6 +7,7 @@ use App\Models\Conversion;
 use App\Models\Currency;
 use App\Models\Pairs;
 use Illuminate\Http\Request;
+use Response;
 use Illuminate\Support\Facades\Validator;
 
 class ConversionController extends Controller
@@ -16,7 +17,7 @@ class ConversionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function convert(Request $request){
+  public function convert(Request $request){
         $validate = Validator::make($request->all(), [
             'from' => 'required|alpha',
             'to' => 'required|alpha',
@@ -36,17 +37,17 @@ class ConversionController extends Controller
         $amount = $request->query('amount') ?? 1;
         $reverse=$request->query('reverse');
 
-        //Si les devises n'existent pas, renvoyer un message d'erreur 
+        //Si les devises n'existent pas, renvoyer un message d'erreur
         if (!$currencyFrom || !$currencyTo) return response()->json(['error' => '`from` or `to` parameters must be existing currency'], 404);
-        //Si les devises sont identiques, renvoyer un message d'erreur 
+        //Si les devises sont identiques, renvoyer un message d'erreur
         if ($from == $to) return response()->json(['error' => '`from` and `to` cannot be the same'], 400);
 
         //Récupérer la paire en fonction des devises données
         $pairs = Pairs::getPairsByCurrencies($currencyFrom, $currencyTo);
         //Vérifier si la paire existe, sinon un message d'erreur sera renvoyé
         if ($pairs == null) return response()->json(['error' => 'Pairs not found'], 404);
-        
-        //Si la paire existe 
+
+        //Si la paire existe
         //Vérifier s'il faut faire le reverse
         if($reverse == true) {
             $converted = $amount * 1/$pairs->rate;
@@ -55,7 +56,7 @@ class ConversionController extends Controller
                 'currencyFrom' => $request->query('to'),
                 'currencyTo' => $request->query('from'),
                 'amountConverted' => $converted,
-                
+
             ];
         }else {
             $converted = $amount * $pairs->rate;
@@ -65,14 +66,13 @@ class ConversionController extends Controller
                 'currencyFrom' => $request->query('from'),
                 'currencyTo' => $request->query('to'),
                 'amountConverted' => $converted,
-                
+
             ];
         }
 
-        //Renvoyer la donnée après la conversion 
+        //Renvoyer la donnée après la conversion
         return response()->json(['message' => 'Convert success', $data],200);
-    
-    
+
     }
     public function index()
     {
@@ -99,6 +99,7 @@ class ConversionController extends Controller
     public function show(Conversion $conversion)
     {
         //
+        return Response::json(Conversion::all());
     }
 
     /**
