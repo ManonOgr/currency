@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Currency;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
 class CurrencyController extends Controller
@@ -49,6 +50,8 @@ class CurrencyController extends Controller
     public function show(Currency $currency)
     {
         //
+        // return Response::json(Currency::all());
+        return Response::json(Currency::all());
     }
 
     /**

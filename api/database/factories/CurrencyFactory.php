@@ -18,7 +18,8 @@ class CurrencyFactory extends Factory
     {
         return [
             //
-            "name"=> $this->faker->currencyCode()
+            "name"=> $this->faker->text(10),
+            "code"=> $this->faker->currencyCode()
         ];
     }
 }

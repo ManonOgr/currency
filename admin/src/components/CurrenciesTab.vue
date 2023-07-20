@@ -1,45 +1,66 @@
+<script>
+import axios from "axios";
+
+const URL = "http://localhost:8000/api/currencies";
+
+export default {
+  name: "CurrenciesTab",
+  data() {
+    return {
+      api_data: "",
+    };
+  },
+  mounted() {
+    axios.get(URL).then((response) => {
+      this.api_data = response.data;
+      console.log(this.api_data);
+    });
+  },
+};
+
+</script>
 <template>
-    <div class="container-tab">
-        <h1>Devises </h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>nom</th>
-                    <th>code</th>
-                    <th>symbole</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr scope="row">
-                    <td>donnée dure</td>
-                    <td>donnée dure</td>
-                    <td>donnée dure</td>
-                </tr>
-            </tbody>
-        </table>
+  <div class="container-tab">
+    <h1>Devises</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>nom</th>
+          <th>code</th>
+          <th>symbol</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="data in this.api_data" :key="data.id">
+          <td>{{ data.currencies_name }}</td>
+          <td>{{ data.currencies_code }}</td>
+          <td>{{ data.currencies_symbol }}</td>
+        </tr>
+      </tbody>
+    </table>
 
-        <button class="btn"> Ajouter une paire </button>
-
-    </div>
+    <button class="btn">Ajouter une paire</button>
+  </div>
 </template>
 
 <style>
 .container-tab {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   border: 1px solid black;
 }
 
 button {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 </style>
