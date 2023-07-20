@@ -1,9 +1,9 @@
 <script setup>
-import Currencies from "@/components/Currencies.vue";
+import CurrenciesTab from "@/components/CurrenciesTab.vue";
 </script>
 
 <template>
   <main>
-    <Currencies/>
+    <CurrenciesTab/>
   </main>
 </template>
