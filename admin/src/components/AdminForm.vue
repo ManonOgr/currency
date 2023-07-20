@@ -1,4 +1,40 @@
 <script>
+import router from "@/routers";
+import axios from "axios";
+
+//function for login
+export default {
+  data() {
+    return {
+      form: {
+        email: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    formSubmit() {
+      try {
+        axios
+          .post("/api/login", {
+            email: this.form.email,
+            password: this.form.password,
+          })
+          //successful connection
+          .then((response) => {
+            console.log(response);
+            //If the connection is successful then it redirects to the admin page
+            router.push("/admin");
+          })
+          .catch((error) => console.log(error));
+
+        //unable to connect
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+};
 </script>
 
 <template>
@@ -11,6 +47,7 @@
           name="email"
           required=""
           placeholder="email"
+          v-model="this.form.email"
         />
         <label></label>
       </div>
@@ -20,12 +57,11 @@
           name="password"
           required=""
           placeholder="password"
+          v-model="this.form.password"
         />
         <label></label>
       </div>
-      <button type="submit">
-        Login
-      </button>
+      <button type="submit" @click.prevent="formSubmit">Login</button>
     </form>
   </div>
 </template>
@@ -95,13 +131,12 @@ body {
   font-size: 12px;
 }
 
-button{
-  background-color: #CDCBCB;
+button {
+  background-color: #cdcbcb;
   border: none;
   border-radius: 20px;
   margin: 0 0 30px;
   width: 150px;
   height: 30px;
 }
-
 </style>

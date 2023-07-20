@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-  
+
     public function login(Request $request)
     {
         $validate = Validator::make($request->all(), [
@@ -23,19 +24,19 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
         if (!$user) {
-            return response()->json(['errors' => 'Wrong credentials'], 404);
+            return response()->json(['errors' => 'Wrong credentials'],401);
         }
-    
+
         $password = $request->password;
-        if ($user->password != $password) {
-            return response()->json(['errors' => 'Wrong credentials'], 404);
+        if (!Hash::check($password, $user->password)){
+            return response()->json(['errors' => 'Wrong credentials'], 403);
         }
 
         $token = $user->remember_token;
 
-        return response()->json(['accessToken' => $token], 200);
+        return response()->json(['accessToken' => $token], 202);
     }
-    
+
     public function index()
     {
         //

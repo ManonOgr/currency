@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/ping', function () {
     return response('API online', 200)->header('Content-Type', 'text/plain');
