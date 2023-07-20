@@ -1,3 +1,30 @@
+<script>
+
+import axios from "axios";
+
+const URL = "http://localhost:8000/api/pairs";
+const URLCurrencies = "http://localhost:8000/api/currencies";
+export default {
+  name: "AdminDashboard",
+  data() {
+    return {
+      curr_data: "",
+      pairs_data: "",
+    };
+  },
+  async mounted() {
+    await axios.get(URL).then((response) => {
+      this.pairs_data = response.data;
+      console.log(this.pairs_data);
+    });
+
+    await axios.get(URLCurrencies).then((response) => {
+      this.curr_data = response.data;
+      console.log(this.curr_data);
+    });
+  },
+};
+</script>
 <template>
   <div>
     <!-- Message erreur en cas d'échec de requête -->
@@ -11,16 +38,16 @@
               <!-- Sélection de la devise source -->
               <div class="form-group">
                 <label for="pairFrom">Currency From : </label>
-                <select id="pairFrom" class="form-control" required>
-                  <option></option>
+                <select id="pairFrom" class="form-control" required v-if="this.curr_data" >
+                  <option v-for="data in this.pairs_data" :key="data.id">{{ this.curr_data[data.currency_from_id]?.currencies_name }}</option>
                 </select>
               </div>
 
               <!-- Sélection de la devise cible -->
               <div class="form-group mt-4">
                 <label for="pairTo">Currency To : </label>
-                <select id="pairTo" class="form-control" required>
-                  <option></option>
+                <select id="pairFrom" class="form-control" required v-if="this.curr_data" >
+                  <option v-for="data in this.pairs_data" :key="data.id">{{ this.curr_data[data.currency_to_id]?.currencies_name }}</option>
                 </select>
               </div>
             </div>
