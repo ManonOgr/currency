@@ -1,5 +1,7 @@
 <template>
     <nav>
-        <button>Disconect</button>
+        <v-btn variant="tonal">
+            Disconnect
+          </v-btn>
     </nav>
 </template>

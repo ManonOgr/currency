@@ -53,9 +53,9 @@ export default {
         <td>{{ this.convert_data[0].count }}</td>
         <td><v-btn variant="tonal"> Modifier </v-btn></td>
         <td>
-          <v-btnvariant="tonal">
+          <v-btn variant="tonal">
             Supprimer
-          </v-btnvariant=>
+          </v-btn>
         </td>
       </tr>
     </tbody>

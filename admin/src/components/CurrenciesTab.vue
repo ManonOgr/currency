@@ -19,15 +19,22 @@ export default {
 };
 
 </script>
+
+
+
+
 <template>
   <div class="container-tab">
     <h1>Devises</h1>
-    <table>
+    <v-table height="300px">
       <thead>
         <tr>
           <th>nom</th>
           <th>code</th>
           <th>symbol</th>
+          <th>modifier</th>
+          <th>supprimer</th>
+
         </tr>
       </thead>
       <tbody>
@@ -35,11 +42,19 @@ export default {
           <td>{{ data.currencies_name }}</td>
           <td>{{ data.currencies_code }}</td>
           <td>{{ data.currencies_symbol }}</td>
+          <td><v-btn variant="tonal"> Modifier </v-btn></td>
+        <td>
+          <v-btn variant="tonal">
+            Supprimer
+          </v-btn>
+        </td>
         </tr>
       </tbody>
-    </table>
+    </v-table>
 
-    <button class="btn">Ajouter une paire</button>
+    <v-btn variant="tonal">
+          Ajouter
+          </v-btn>
   </div>
 </template>
 
