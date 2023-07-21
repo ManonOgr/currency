@@ -63,9 +63,11 @@ class PairsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pairs = Pairs::find($id);
-        $pairs->update($request->all());
-        return response()->json($pairs);
+        $formData = $request->getContent();
+        var_dump($formData);
+        // $pairs = Pairs::find($id);
+        // $pairs->update($formData->rate);
+        // return response()->json($pairs);
     }
 
     /**
@@ -84,5 +86,10 @@ class PairsController extends Controller
         return response()->json(['message'=>'Delete success']);
     }
 
+    public function status()
+    {
+        // Renvoie une réponse JSON avec le statut "ok"
+        return response()->json(['status' => 'ok']);
+    }
 
 }

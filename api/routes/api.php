@@ -34,3 +34,10 @@ Route::get('{rate}/{currency_from_id}/{currency_to_id}',[ConversionController::c
 
 //pairs disponibles
 Route::get('/devises/pairs',[ConversionController::class,"pairs"]);
+
+//route edit pairs
+
+Route::put('/update/{id}',[PairsController::class,"update"]);
+
+//state
+Route::get('/status', [PairsController::class, 'status']);
