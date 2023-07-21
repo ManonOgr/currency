@@ -6,18 +6,6 @@ const URLCurrencies = "http://localhost:8000/api/currencies";
 const URLConversions = "http://localhost:8000/api/conversions";
 
 export default {
-  methods: {
-    async deletePairs(id) {
-      await axios
-        .delete(`http://127.0.0.1:8000/api/pairs/${id}`)
-        .then((response) => {
-          window.location.reload();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-  },
   name: "AdminDashboard",
   data() {
     return {
@@ -65,9 +53,9 @@ export default {
         <td>{{ this.convert_data[0].count }}</td>
         <td><v-btn variant="tonal"> Modifier </v-btn></td>
         <td>
-          <v-btn @click="deletePairs(pair.id)" variant="tonal">
+          <v-btnvariant="tonal">
             Supprimer
-          </v-btn>
+          </v-btnvariant=>
         </td>
       </tr>
     </tbody>
