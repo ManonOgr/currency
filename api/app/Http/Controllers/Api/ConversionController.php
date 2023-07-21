@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Conversion;
 use App\Models\Currency;
 use App\Models\Pairs;
+use Illuminate\Http\Client\Response as ClientResponse;
 use Illuminate\Http\Request;
-use Response;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Response as FacadesResponse;
 use Illuminate\Support\Facades\Validator;
 
 class ConversionController extends Controller
@@ -74,6 +76,26 @@ class ConversionController extends Controller
         return response()->json(['message' => 'Convert success', $data],200);
 
     }
+
+    public function conversions(Request $request, $rate, $currency_from_id, $currency_to_id)
+    {
+        $currencyFrom = Currency::where([["currencies_code", $currency_from_id]])->first("id");
+        $currencyTo = Currency::where([["currencies_code", $currency_to_id]])->first("id");
+
+        if ($currencyFrom == null || $currencyTo == null) {
+            return Response::json(["message" => "Paire de conversion non existante.", "status" => \Illuminate\Http\Response::HTTP_NOT_FOUND]);
+        }
+
+        $pairs = Pairs::where([["currency_from_id", $currencyFrom->id],["currency_to_id", $currencyTo->id ]])->first();
+        if ($pairs == null) {
+            return FacadesResponse::json(["message" => "Paire de conversion non existante.", "status" => \Illuminate\Http\Response::HTTP_NOT_FOUND]);
+        }
+        return $pairs->rate * $rate;
+
+
+
+    }
+
     public function index()
     {
         //
