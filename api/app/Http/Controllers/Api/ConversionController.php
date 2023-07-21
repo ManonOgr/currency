@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Conversion;
 use App\Models\Currency;
 use App\Models\Pairs;
-use Illuminate\Http\Client\Response as ClientResponse;
+use App\Http\Resources\PairsResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response as FacadesResponse;
 use Illuminate\Support\Facades\Validator;
 
@@ -77,6 +78,7 @@ class ConversionController extends Controller
 
     }
 
+    //conversions dans l'url
     public function conversions(Request $request, $rate, $currency_from_id, $currency_to_id)
     {
         $currencyFrom = Currency::where([["currencies_code", $currency_from_id]])->first("id");
@@ -92,8 +94,17 @@ class ConversionController extends Controller
         }
         return $pairs->rate * $rate;
 
+    }
 
-
+    //liste des pairs disponibles
+    public function pairs()
+    {
+        $result  =  DB::table('pairs')
+                ->join('currencies as c1', 'c1.id', '=', 'pairs.currency_from_id')
+                ->join('currencies as c2', 'c2.id', '=', 'pairs.currency_to_id')
+                ->select('c1.currencies_code as from_id', 'c2.currencies_code as to_id')
+                ->get();
+        return response()->json($result);
     }
 
     public function index()

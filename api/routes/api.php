@@ -4,7 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ConversionController;
 use App\Http\Controllers\Api\CurrencyController;
 use App\Http\Controllers\Api\PairsController;
-use Illuminate\Http\Request;
+use App\Http\Resources\PairsResource;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,10 +24,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
 });
 
-Route::get('/ping', function () {
-    return response('API online', 200)->header('Content-Type', 'text/plain');
-});
-
 Route::resource('pairs', PairsController::class);
 Route::resource('currencies', CurrencyController::class);
 Route::get('conversions', [ConversionController::class, 'show']);
@@ -35,3 +31,6 @@ Route::get('conversions', [ConversionController::class, 'show']);
 
 //conversions dans url
 Route::get('{rate}/{currency_from_id}/{currency_to_id}',[ConversionController::class, 'conversions']);
+
+//pairs disponibles
+Route::get('/devises/pairs',[ConversionController::class,"pairs"]);
