@@ -6,10 +6,22 @@ const URLCurrencies = "http://localhost:8000/api/currencies";
 const URLConversions = "http://localhost:8000/api/conversions";
 
 export default {
+  methods: {
+    async deletePairs(id) {
+      await axios
+        .delete(`http://127.0.0.1:8000/api/pairs/${id}`)
+        .then((response) => {
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
   name: "AdminDashboard",
   data() {
     return {
-      convert_data:"",
+      convert_data: "",
       curr_data: "",
       pairs_data: "",
     };
@@ -31,7 +43,38 @@ export default {
   },
 };
 </script>
+
 <template>
+  <v-table height="300px">
+    <thead>
+      <tr>
+        <th class="text-left">Nom de la paire</th>
+        <th class="text-left">Taux de change</th>
+        <th class="text-left">Décompte</th>
+        <th class="text-left">Modifier</th>
+        <th class="text-left">Supprimer</th>
+      </tr>
+    </thead>
+    <tbody v-if="this.curr_data && this.convert_data">
+      <tr v-for="data in this.pairs_data" :key="data.id">
+        <td>
+          {{ this.curr_data[data.currency_from_id]?.currencies_name }} /
+          {{ this.curr_data[data.currency_to_id]?.currencies_name }}
+        </td>
+        <td>{{ data.rate }}</td>
+        <td>{{ this.convert_data[0].count }}</td>
+        <td><v-btn variant="tonal"> Modifier </v-btn></td>
+        <td>
+          <v-btn @click="deletePairs(pair.id)" variant="tonal">
+            Supprimer
+          </v-btn>
+        </td>
+      </tr>
+    </tbody>
+  </v-table>
+</template>
+
+<!-- <template>
   <div class="container">
     <h1>Dashboard admin</h1>
     <table>
@@ -50,7 +93,7 @@ export default {
           <td>{{ data.rate }}</td>
           <td>{{ this.convert_data[0].count }}</td>
           <td><button class="btn">Modifier</button></td>
-          <td><button class="btn">Supprimer</button></td>
+          <td><button @click="deletePairs(pair.id)" class="btn">Supprimer</button></td>
         </tr>
       </tbody>
     </table>
@@ -103,4 +146,4 @@ tbody tr:nth-child(event) {
 .add {
   margin-top: 30px;
 }
-</style>
+</style> -->

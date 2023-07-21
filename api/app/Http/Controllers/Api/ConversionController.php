@@ -132,7 +132,7 @@ class ConversionController extends Controller
     public function show(Conversion $conversion)
     {
         //
-        return Response::json(Conversion::all());
+        return FacadesResponse::json(Conversion::all());
     }
 
     /**
