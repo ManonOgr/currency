@@ -1,9 +1,11 @@
-<script setup></script>
+<script setup>
+
+</script>
 
 <template>
   <div class="container">
     <nav>
-        <v-btn variant="tonal"> Connexion </v-btn>
+        <v-btn variant="tonal"> <a href="/admin/login">Connexion</a></v-btn>
     </nav>
     <h1>Bienvenue sur l'API REST de Money Value</h1>
     <br />
@@ -25,12 +27,18 @@
       </ul>
     </div>
     <div>
-        <v-btn variant="tonal"> Documentation </v-btn>
+        <v-btn variant="tonal"><a href="https://documenter.getpostman.com/view/28683334/2s946k7r4Z">Documentation</a></v-btn>
     </div>
     </div>
 </template>
 
 <style>
+a{
+    text-decoration: none;
+}
+a:visited{
+    color: #000;
+}
 nav{
     display: flex;
     flex-direction: column;

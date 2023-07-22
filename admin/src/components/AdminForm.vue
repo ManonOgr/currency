@@ -61,7 +61,7 @@ export default {
         />
         <label></label>
       </div>
-      <button type="submit" @click.prevent="formSubmit">Login</button>
+      <v-btn variant="tonal" @click.prevent="formSubmit">Login</v-btn>
     </form>
   </div>
 </template>
