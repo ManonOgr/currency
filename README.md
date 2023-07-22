@@ -6,7 +6,7 @@
 
 ## Project setup
 ```
- $ cd admin 
+ cd admin 
 ```
 ```
 npm install -g @vue/cli 
