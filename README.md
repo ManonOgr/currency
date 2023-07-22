@@ -1,5 +1,7 @@
 # **Welcome to MoneyValue API**
 
+<p align="center"><a href="#" target="_blank"><img src="https://static.vecteezy.com/system/resources/previews/009/645/364/original/coin-icon-logo-illustration-money-stacked-coins-symbol-template-for-graphic-and-web-design-collection-free-vector.jpg" width="400" alt="MoneyValue Coin logo"></a></p>
+
 # **Admin**
 
 ## Project setup
