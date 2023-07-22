@@ -6,7 +6,7 @@
 
 ## Project setup
 ```
- cd admin 
+ $ cd admin 
 ```
 ```
 npm install -g @vue/cli 
@@ -40,20 +40,29 @@ Password: Admin
 
 # **API**
 
-Create a new database with the name moneyvalue and add the information in the .env file 
- Type : 
+**Create a new database with the name moneyvalue and add the information in the .env file**
+
+
+## Type :
+
   ```
  cd api
  ```
  ```
  composer install
  ```
- Launch the migrations and the seeders
+
+## Launch the migrations and the seeders
+
   ```
   php artisan migrate:fresh -seed
  ```
-Launch with 
+
+## Launch with
+
    ```
    php artisan serve
   ```
-php artisan serve to then consult the project at the address indicated
+**php artisan serve to then consult the project at the address indicated**
+
+
