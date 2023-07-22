@@ -22,7 +22,7 @@ export default {
 
 <template>
   <div class="title">
-    <h1>Devises</h1>
+    <h1>Devices</h1>
     <div class="container-tab">
       <v-table height="300px">
       <thead>
