@@ -1,5 +1,7 @@
 # **Welcome to MoneyValue API**
 
+<p align="center"><a href="#" target="_blank"><img src="https://cdn4.iconfinder.com/data/icons/world-currency-2/512/USD-512.png" width="400" alt="logo"></a></p>
+
 # **Admin**
 
 ## Project setup
