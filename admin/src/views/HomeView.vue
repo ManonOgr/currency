@@ -13,13 +13,13 @@
     <br />
     <div>
       <ul>
-        Partie publique
+        Partie publique côté serveur : 
         <li>Conversion via une Url</li>
         <li>Affichage des pairs disponible via une Url</li>
       </ul>
       <br />
       <ul>
-        Partie admin
+        Partie admin côté front: 
         <li>Connexion</li>
         <li>Tableau avec suppression / ajout / modification</li>
         <li>Page d'informations de devices : nom / symbol / code</li>
