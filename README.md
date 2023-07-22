@@ -32,8 +32,8 @@ npm install
 
 ## Admin Logs
 ```
-**Email:**  [admin@admin.fr](mailto:admin@admin.fr)  
-**Password:** Admin
+Email:  [admin@admin.fr](mailto:admin@admin.fr)  
+Password: Admin
 ```
 
 # **API**
