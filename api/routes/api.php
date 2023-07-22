@@ -4,7 +4,6 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ConversionController;
 use App\Http\Controllers\Api\CurrencyController;
 use App\Http\Controllers\Api\PairsController;
-use App\Http\Resources\PairsResource;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,14 +28,13 @@ Route::resource('currencies', CurrencyController::class);
 Route::get('conversions', [ConversionController::class, 'show']);
 //Route::get('makeConversions', [ConversionController::class, 'convert']);
 
-//conversions dans url
+//Conversion in the url
 Route::get('{rate}/{currency_from_id}/{currency_to_id}',[ConversionController::class, 'conversions']);
 
-//pairs disponibles
+//pairs available
 Route::get('/devises/pairs',[ConversionController::class,"pairs"]);
 
 //route edit pairs
-
 Route::put('/update/{id}',[PairsController::class,"update"]);
 
 //state
