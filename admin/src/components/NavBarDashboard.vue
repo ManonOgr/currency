@@ -1,7 +1,7 @@
 <template>
   <nav>
     <v-btn variant="tonal"> Disconnect </v-btn>
-    <v-btn variant="tonal"> Ajout </v-btn>
+    <v-btn variant="tonal"><a href="/add"> Ajout</a> </v-btn>
     <v-btn variant="tonal"> <a href="/currency">Devices</a></v-btn>
   </nav>
 </template>

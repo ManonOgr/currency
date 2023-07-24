@@ -23,8 +23,8 @@ export default {
           //successful connection
           .then((response) => {
             console.log(response);
-            //If the connection is successful then it redirects to the admin page
-            router.push("/admin");
+              //If the connection is successful then it redirects to the admin page
+            router.push("/admin");  
           })
           .catch((error) => console.log(error));
 
@@ -33,6 +33,9 @@ export default {
         console.log(error);
       }
     },
+  },
+  logout() {
+    localStorage.removeItem('admin');
   },
 };
 </script>
