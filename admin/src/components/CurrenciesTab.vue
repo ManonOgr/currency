@@ -13,7 +13,6 @@ export default {
   mounted() {
     axios.get(URL).then((response) => {
       this.api_data = response.data;
-      console.log(this.api_data);
     });
   },
 };

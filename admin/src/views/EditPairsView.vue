@@ -11,7 +11,6 @@ export default {
     async editPairs(id) {
         await axios
         .put(`http://127.0.0.1:8000/api/pairs/${id}`,document.getElementById("input").value )
-        .catch((err) => console.log(err));
     },
   },
 };

@@ -9,9 +9,6 @@ export default {
     async deletePairs(id) {
       await axios
         .delete(`http://127.0.0.1:8000/api/pairs/${id}`)
-        .catch((error) => {
-          console.log(error);
-        });
       this.pairs_data = this.pairs_data.filter((p) => p.id !== id);
     },
     onHandleUpdate(id) {
@@ -29,16 +26,13 @@ export default {
   async mounted() {
     await axios.get(URL).then((response) => {
       this.pairs_data = response.data;
-      console.log(this.pairs_data);
     });
 
     await axios.get(URLCurrencies).then((response) => {
       this.curr_data = response.data;
-      console.log(this.curr_data);
     });
     await axios.get(URLConversions).then((response) => {
       this.convert_data = response.data;
-      console.log(this.convert_data);
     });
   },
 };

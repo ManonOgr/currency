@@ -15,12 +15,10 @@ export default {
   async mounted() {
     await axios.get(URL).then((response) => {
       this.pairs_data = response.data;
-      console.log(this.pairs_data);
     });
 
     await axios.get(URLCurrencies).then((response) => {
       this.curr_data = response.data;
-      console.log(this.curr_data);
     });
   },
 };

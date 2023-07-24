@@ -34,6 +34,8 @@ Route::get('{rate}/{currency_from_id}/{currency_to_id}',[ConversionController::c
 //pairs available
 Route::get('/devises/pairs',[ConversionController::class,"pairs"]);
 
+//route create pairs
+Route::put('/create<',[PairsController::class,"store"]);
 //route edit pairs
 Route::put('/update/{id}',[PairsController::class,"update"]);
 

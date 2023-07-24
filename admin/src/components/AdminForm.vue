@@ -22,11 +22,9 @@ export default {
           })
           //successful connection
           .then((response) => {
-            console.log(response);
               //If the connection is successful then it redirects to the admin page
             router.push("/admin");  
           })
-          .catch((error) => console.log(error));
 
         //unable to connect
       } catch (error) {
