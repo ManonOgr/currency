@@ -44,7 +44,7 @@ const router = createRouter({
       props: true
     },
     {
-      path: "/add/:id",
+      path: "/add",
       name: "add",
       component: AddPairs,
       props: true
