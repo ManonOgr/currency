@@ -5,7 +5,6 @@ import LoginView from '@/views/LoginView.vue'
 import CurrenciesView from '@/views/CurrenciesView.vue'
 import AdminView from '@/views/AdminView.vue'
 import EditPairs from '@/views/EditPairsView.vue'
-import ConvertView from '@/views/ConvertView.vue'
 import AddPairs from '@/views/AddPairsView.vue'
 
 
@@ -31,11 +30,6 @@ const router = createRouter({
       path: "/admin",
       name: "admin",
       component: AdminView
-    },
-    {
-      path: "/convert",
-      name: "convert",
-      component: ConvertView
     },
     {
       path: "/edit/:id",
