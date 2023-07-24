@@ -21,7 +21,7 @@ export default {
             password: this.form.password,
           })
           //successful connection
-          .then((response) => {
+          .then(() => {
               //If the connection is successful then it redirects to the admin page
             router.push("/admin");  
           })
