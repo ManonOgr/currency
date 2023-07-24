@@ -6,15 +6,17 @@ const URLConversions = "http://localhost:8000/api/conversions";
 
 export default {
   methods: {
-    async deletePairs(id) {
-      await axios
-        .delete(`http://127.0.0.1:8000/api/pairs/${id}`)
-      this.pairs_data = this.pairs_data.filter((p) => p.id !== id);
-    },
-    onHandleUpdate(id) {
-      this.$router.push({ name: "edit", params: { id: id } });
-    },
-  },
+        async deletePairs(id) {
+            await axios.delete(`http://127.0.0.1:8000/api/pairs/${id}`)
+                .catch((error) => {
+                    console.log(error);
+                });
+            this.pairs_data = this.pairs_data.filter((p) => p.id !== id);
+        },
+        onHandleUpdate(id){
+          this.$router.push({name:'edit', params:{id : id }})
+        }
+      },
   name: "AdminDashboard",
   data() {
     return {
@@ -26,25 +28,28 @@ export default {
   async mounted() {
     await axios.get(URL).then((response) => {
       this.pairs_data = response.data;
+      console.log(this.pairs_data);
     });
 
     await axios.get(URLCurrencies).then((response) => {
       this.curr_data = response.data;
+      console.log(this.curr_data);
     });
     await axios.get(URLConversions).then((response) => {
       this.convert_data = response.data;
+      console.log(this.convert_data);
     });
   },
 };
 </script>
 
-<template>
-  <div class="container-tab-admin">
-    <div class="title">
-      <h1>Dashboard Admin</h1>
-    </div>
-    <div class="tab">
-      <v-table height="300px">
+<template>  
+<div class="container-tab-admin">
+  <div class="title">
+    <h1>Dashboard Admin</h1>
+  </div>
+  <div class="tab">
+    <v-table height="300px">
         <thead>
           <tr>
             <th class="text-left">Nom de la paire</th>
@@ -75,12 +80,14 @@ export default {
           </tr>
         </tbody>
       </v-table>
-    </div>
   </div>
+  
+</div>
+  
 </template>
 
 <style>
-.container-tab-admin {
+.container-tab-admin{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,7 +95,7 @@ export default {
   margin-top: 50px;
 }
 
-.tab {
+.tab{
   margin-top: 50px;
 }
 </style>

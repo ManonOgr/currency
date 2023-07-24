@@ -1,8 +1,8 @@
 <template>
   <nav>
-    <v-btn variant="tonal"> Disconnect </v-btn>
+    <v-btn variant="tonal"><a href="/admin/login">Deconnexion</a> </v-btn>
     <v-btn variant="tonal"><a href="/add"> Ajout</a> </v-btn>
-    <v-btn variant="tonal"> <a href="/currency">Devices</a></v-btn>
+    <v-btn variant="tonal"> <a href="/currency">Devises</a></v-btn>
   </nav>
 </template>
 
